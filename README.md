@@ -1,3 +1,3 @@
-## Wen UI!
+## Wen!
 
-The UI library for Wen!
+Your NFT community toolset!
