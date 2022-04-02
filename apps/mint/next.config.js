@@ -1,6 +1,3 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const ntm = require("next-transpile-modules");
 
-module.exports = nextConfig
+module.exports = ntm(["@wen/mint-nft"]);

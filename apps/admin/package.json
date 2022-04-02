@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@wen/ui": "workspace:*",
+    "@wen/mint-nft": "workspace:*",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"

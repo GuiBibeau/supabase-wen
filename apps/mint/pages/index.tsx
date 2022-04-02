@@ -1,12 +1,19 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { W3FS__factory } from "@wen/mint-nft";
 import { VideoCard } from "../components/VideoCard";
 import styles from "../styles/Home.module.css";
 import { getSession, useWen } from "wen-connect";
+import { w3fsProvider } from "../lib/w3fs";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = ({ session }: any) => {
   const { wallet, connect, disconnect } = useWen(session);
+  const wf3s = w3fsProvider();
+
+  useEffect(() => {
+    wf3s?.functions.name().then(([name]) => console.log(name));
+  }, []);
 
   const handleConnect = () => {
     // Optional argument to specify which chain to get the user connected on.
@@ -17,8 +24,12 @@ const Home: NextPage = ({ session }: any) => {
     disconnect();
   };
 
-  const buttonText: "Disconnect" | "Mint today" = wallet.connected ? "Disconnect" : "Mint today";
-  const handdleButtonClick = wallet.connected ? handleDisconnect : handleConnect;
+  const buttonText: "Disconnect" | "Mint today" = wallet.connected
+    ? "Disconnect"
+    : "Mint today";
+  const handdleButtonClick = wallet.connected
+    ? handleDisconnect
+    : handleConnect;
 
   return (
     <div className={styles.container}>

@@ -3,6 +3,6 @@
   "description": "The api powering wen",
   "version": "0.0.1",
   "scripts": {
-    "dev": "supabase functions serve api "
+    "devtest": "supabase functions serve api "
   }
 }
