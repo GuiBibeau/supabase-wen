@@ -1,0 +1,12 @@
+{
+  "name": "@wen/scripts",
+  "version": "1.0.0",
+  "description": "A series of helper scripts to test and develop wen applications",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "ethers": "^5.6.1",
+    "@wen/mint-nft": "workspace:*",
+    "dotenv": "^16.0.0"
+  }
+}

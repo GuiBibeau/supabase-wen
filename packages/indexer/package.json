@@ -1,0 +1,11 @@
+{
+  "name": "@wen/indexer",
+  "version": "1.0.0",
+  "description": "An deno indexer ",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "deno run index.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}

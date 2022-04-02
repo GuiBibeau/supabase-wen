@@ -9,10 +9,10 @@ import "erc721a/contracts/ERC721A.sol";
 contract W3FS is ERC721A, Ownable, Pausable {
     using SafeMath for uint256;
 
-    event PermanentURI(string _value, uint256 indexed _id);
+    event PermanentURI(string _value, uint256 indexed _id, address indexed _to);
 
     uint256 public constant MAX_SUPPLY = 5000;
-    uint256 public constant PRICE = 0.1 ether;
+    uint256 public constant PRICE = 0.01 ether;
     uint256 public constant MAX_PER_MINT = 5;
     uint256 public constant MAX_RESERVE_SUPPLY = 100;
 
@@ -60,7 +60,7 @@ contract W3FS is ERC721A, Ownable, Pausable {
     function lockMetadata(uint256 quantity) internal {
         for (uint256 i = quantity; i > 0; i--) {
             uint256 tid = totalSupply() - i;
-            emit PermanentURI(tokenURI(tid), tid);
+            emit PermanentURI(tokenURI(tid), tid, msg.sender);
         }
     }
 

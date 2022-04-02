@@ -73,6 +73,20 @@ importers:
       tailwindcss: 2.2.19_6eb7ee34aed2e4b7cd3f6e8f0edcd864
       typescript: 4.6.3
 
+  packages/indexer:
+    specifiers: {}
+
+  packages/scripts:
+    specifiers:
+      '@wen/mint-nft': workspace:*
+      dotenv: ^16.0.0
+      ethers: ^5.6.1
+    dependencies:
+      '@wen/mint-nft': link:../w3fs-nft
+      dotenv: 16.0.0
+    devDependencies:
+      ethers: 5.6.2
+
   packages/ui:
     specifiers:
       '@types/react': ^17.0.27
@@ -4312,7 +4326,6 @@ packages:
   /dotenv/16.0.0:
     resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
     engines: {node: '>=12'}
-    dev: true
 
   /dotignore/0.1.2:
     resolution: {integrity: sha512-UGGGWfSauusaVJC+8fgV+NVvBXkCTmVv7sk6nojDZZvuOUNGUy0Zk4UpHQD6EDjS0jpBwcACvH4eofvyzBcRDw==}
