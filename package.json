@@ -3,8 +3,6 @@
   "description": "wen monorepo",
   "private": true,
   "workspaces": [
-    "app",
-    "api",
     "packages/*",
     "apps/*"
   ],
