@@ -3,8 +3,26 @@ import Head from "next/head";
 import Image from "next/image";
 import { VideoCard } from "../components/VideoCard";
 import styles from "../styles/Home.module.css";
+import { getSession, useWen } from "wen-connect";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ session }: any) => {
+  const { wallet, connect, disconnect } = useWen(session);
+
+  const handleConnect = () => {
+    // Optional argument to specify which chain to get the user connected on.
+    connect({ chainId: "0x4" });
+    console.log(wallet.connected);
+  };
+
+  const handleDisconnect = () => {
+    disconnect();
+    console.log(wallet.connected);
+
+  };
+
+  const buttonText: "Disconnect" | "Mint today" = wallet.connected ? "Disconnect" : "Mint today";
+  const handdleButtonClick = wallet.connected ? handleDisconnect : handleConnect;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -33,12 +51,12 @@ const Home: NextPage = () => {
                 quisque ut interdum tincidunt duis.
               </p>
               <div className="mt-8">
-                <div className="inline-flex rounded-md shadow">
+                <div className="inline-flex rounded-md shadow cursor-pointer">
                   <a
-                    href="#"
+                    onClick={handdleButtonClick}
                     className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
                   >
-                    Mint today
+                    {buttonText}
                   </a>
                 </div>
               </div>
@@ -51,3 +69,12 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps = async (context: any) => {
+  return {
+    props: {
+      // session.wallet is the same info as const { wallet } = useWen(props session);
+      session: getSession(context),
+    },
+  };
+};
