@@ -12,7 +12,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/",
+      url: process.env.ALCHEMY_RINKEBY_URL!,
       accounts: [process.env.RINKEBY_PRIVATE_KEY!],
     },
   },

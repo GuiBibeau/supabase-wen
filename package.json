@@ -5,7 +5,8 @@
   "workspaces": [
     "app",
     "api",
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build --scope=app --include-dependencies --no-deps",
