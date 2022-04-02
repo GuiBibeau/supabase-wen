@@ -4,7 +4,8 @@
   "description": "An deno indexer ",
   "main": "index.ts",
   "scripts": {
-    "dev": "deno run index.ts"
+    "dev": "deno run index.ts",
+    "@wen/mint-nft": "workspace:*"
   },
   "author": "",
   "license": "ISC"

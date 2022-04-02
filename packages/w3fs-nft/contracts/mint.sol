@@ -85,4 +85,8 @@ contract W3FS is ERC721A, Ownable, Pausable {
     function _baseURI() internal view override returns (string memory) {
         return _contractBaseURI;
     }
+
+    function tokenMeta(uint256 _tokenId) public view returns (string memory) {
+        return tokenURI(_tokenId);
+    }
 }
