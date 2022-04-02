@@ -11,13 +11,10 @@ const Home: NextPage = ({ session }: any) => {
   const handleConnect = () => {
     // Optional argument to specify which chain to get the user connected on.
     connect({ chainId: "0x4" });
-    console.log(wallet.connected);
   };
 
   const handleDisconnect = () => {
     disconnect();
-    console.log(wallet.connected);
-
   };
 
   const buttonText: "Disconnect" | "Mint today" = wallet.connected ? "Disconnect" : "Mint today";
@@ -73,7 +70,6 @@ export default Home;
 export const getServerSideProps = async (context: any) => {
   return {
     props: {
-      // session.wallet is the same info as const { wallet } = useWen(props session);
       session: getSession(context),
     },
   };
