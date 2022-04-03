@@ -1,7 +1,13 @@
-app = "hellonode"
+# fly.toml file generated for lively-haze-8488 on 2022-04-02T21:33:30-04:00
+
+app = "lively-haze-8488"
+
 
 [build]
   builder = "heroku/buildpacks:20"
+
+[env]
+  PORT = "8080"
 
 [[services]]
   internal_port = 8080

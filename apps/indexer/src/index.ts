@@ -1,11 +1,15 @@
 import app from "./app";
 import http from "http";
 import type { HttpError } from "http-errors";
-import { Wallet, providers, BigNumber, BigNumberish } from "ethers";
+import { Contract } from "ethers";
 import { config as dotnevConfig } from "dotenv";
 import fetch from "isomorphic-unfetch";
+import { supabase } from "./lib/supabase";
+import { ethersProvider } from "./lib/ethers";
 
 dotnevConfig();
+
+const listeners = {};
 
 const port = normalizePort(process.env.PORT || "4000");
 app.set("port", port);
@@ -54,9 +58,36 @@ function onError(error: HttpError) {
   }
 }
 
-function onListening() {
+async function onListening() {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr!.port;
+
+  const { data } = await supabase.from("contracts").select("*");
+
+  data?.forEach(async (contract: any) => {
+    const contractApi = new Contract(
+      contract.address,
+      contract.abi.abi,
+      ethersProvider
+    );
+
+    contractApi.on("Transfer", async (from, to, tokenId) => {
+      console.log(
+        `Contract: ${contract.id} Transfer: id: ${tokenId} from: ${from} to ${to} `
+      );
+
+      await supabase.from("members").upsert({
+        id: to,
+        address: to,
+      });
+
+      await supabase.from("member_communities").upsert({
+        token_id: tokenId,
+        member_id: to,
+        community_id: contract.community_id,
+      });
+    });
+  });
 
   console.log("Server listening on " + bind + " 🚀");
 }

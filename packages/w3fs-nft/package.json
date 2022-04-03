@@ -3,11 +3,11 @@
   "main": "typechain/index.ts",
   "description": "Contains the code for the smart contracts, compiled ABI and type defenitions by TypeChain",
   "scripts": {
-    "test": "hardhat test:jest",
-    "build": "hardhat compile && ts-node scripts/types.ts",
-    "deploy": "hardhat run --network rinkeby scripts/deploy.ts",
-    "buy-nft": "hardhat run --network rinkeby scripts/buy-nft.ts",
-    "unpause": "hardhat run --network rinkeby scripts/unpause.ts"
+    "test": "TS_NODE_TRANSPILE_ONLY=1  hardhat test:jest",
+    "build": "TS_NODE_TRANSPILE_ONLY=1  hardhat compile && ts-node scripts/types.ts",
+    "deploy": "TS_NODE_TRANSPILE_ONLY=1  hardhat run --network rinkeby scripts/deploy.ts",
+    "buy-nft": "TS_NODE_TRANSPILE_ONLY=1  hardhat run --network rinkeby scripts/buy-nft.ts",
+    "unpause": "TS_NODE_TRANSPILE_ONLY=1  hardhat run --network rinkeby scripts/unpause.ts"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.6.2",

@@ -4,14 +4,14 @@
   "description": "An deno indexer ",
   "main": "index.ts",
   "scripts": {
-    "dev": "ts-node ./src/index",
+    "dev": "ts-node ./src/index -w",
     "start": "node dist/index.js",
     "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@wen/mint-nft": "workspace:*",
+    "@supabase/supabase-js": "^1.33.3",
     "clean-css": "^4.1.11",
     "constantinople": "^3.1.1",
     "cookie-parser": "~1.4.4",
