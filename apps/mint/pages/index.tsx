@@ -37,8 +37,10 @@ const Home: NextPage = ({ session }: any) => {
     } catch (e) {
       console.error(e);
     } finally {
-      setLoading(false);
-      router.push("/join");
+      setTimeout(() => {
+        setLoading(false);
+        router.push("/join");
+      }, 1000);
     }
   };
 
