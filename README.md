@@ -1,6 +1,6 @@
 ## Wen NFT!
 
-Your NFT community toolset!
+Your NFT community toolset! Built on Supabase DB and edge functions.
 
 [3m video demo!](https://raw.githubusercontent.com/gbibeaul/supabase-wen/main/demo.mov)
 
