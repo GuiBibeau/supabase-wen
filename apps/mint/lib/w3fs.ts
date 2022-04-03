@@ -1,5 +1,5 @@
-import { W3FS__factory } from "@wen/mint-nft";
 import { ethers } from "ethers";
+import { W3FS__factory } from "./w3fs/factories/W3FS__factory";
 
 export const w3fsProvider = () => {
   if (typeof window === "undefined" || !window.ethereum) {
