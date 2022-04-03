@@ -32,7 +32,7 @@ const Join = () => {
     <div>
       <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-          <span className="block">Join the W3FS community!</span>
+          <span className="block">Join the W3FS exclusive Discord!</span>
         </h2>
 
         <div className="h-56 sm:h-72  flex justify-center mt-8   w-full">

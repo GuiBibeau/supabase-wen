@@ -76,16 +76,24 @@ async function onListening() {
         `Contract: ${contract.id} Transfer: id: ${tokenId} from: ${from} to ${to} `
       );
 
-      await supabase.from("members").upsert({
-        id: to.toLowerCase(),
-        address: to.toLowerCase(),
+      supabase.functions.invoke("mint", {
+        body: JSON.stringify({
+          to,
+          tokenId,
+          community_id: contract.community_id,
+        }),
       });
 
-      await supabase.from("member_communities").upsert({
-        token_id: tokenId,
-        member_id: to.toLowerCase(),
-        community_id: contract.community_id,
-      });
+      // await supabase.from("members").upsert({
+      //   id: to.toLowerCase(),
+      //   address: to.toLowerCase(),
+      // });
+
+      // await supabase.from("member_communities").upsert({
+      //   token_id: tokenId,
+      //   member_id: to.toLowerCase(),
+      //   community_id: contract.community_id,
+      // });
     });
   });
 
