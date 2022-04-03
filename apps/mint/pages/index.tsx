@@ -1,35 +1,50 @@
-import type { NextPage } from "next";
+import type { GetServerSidePropsContext, NextPage } from "next";
 import Head from "next/head";
-import { W3FS__factory } from "@wen/mint-nft";
 import { VideoCard } from "../components/VideoCard";
 import styles from "../styles/Home.module.css";
 import { getSession, useWen } from "wen-connect";
 import { w3fsProvider } from "../lib/w3fs";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { BigNumber, utils } from "ethers";
+import { LoadDoats } from "../components/LoadDots";
+import { useRouter } from "next/router";
+import { supabase } from "../lib/supabase";
 
 const Home: NextPage = ({ session }: any) => {
-  const { wallet, connect, disconnect } = useWen(session);
-  const wf3s = w3fsProvider();
-
-  useEffect(() => {
-    wf3s?.functions.name().then(([name]) => console.log(name));
-  }, []);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const { wallet, connect } = useWen(session);
 
   const handleConnect = () => {
-    // Optional argument to specify which chain to get the user connected on.
     connect({ chainId: "0x4" });
   };
 
-  const handleDisconnect = () => {
-    disconnect();
+  useEffect(() => {
+    if (window.location.href.includes("refresh_token")) {
+      window.open("https://discord.gg/bfhNapbvbA");
+    }
+  }, []);
+
+  const handleMint = async () => {
+    try {
+      router.prefetch("/join");
+      setLoading(true);
+      const { mint } = w3fsProvider();
+      console.log("here");
+      const tokenPrice = utils.parseEther("0.02");
+      const tx = await mint(BigNumber.from(1), { value: tokenPrice });
+      await tx.wait(1);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+      router.push("/join");
+    }
   };
 
-  const buttonText: "Disconnect" | "Mint today" = wallet.connected
-    ? "Disconnect"
-    : "Mint today";
-  const handdleButtonClick = wallet.connected
-    ? handleDisconnect
-    : handleConnect;
+  const buttonText = wallet.connected ? "Mint" : "Connect to mint ";
+
+  const handdleButtonClick = wallet.connected ? handleMint : handleConnect;
 
   return (
     <div className={styles.container}>
@@ -64,7 +79,7 @@ const Home: NextPage = ({ session }: any) => {
                     onClick={handdleButtonClick}
                     className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
                   >
-                    {buttonText}
+                    {loading ? <LoadDoats /> : buttonText}
                   </a>
                 </div>
               </div>
@@ -78,7 +93,9 @@ const Home: NextPage = ({ session }: any) => {
 
 export default Home;
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   return {
     props: {
       session: getSession(context),

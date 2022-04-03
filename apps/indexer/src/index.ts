@@ -77,13 +77,13 @@ async function onListening() {
       );
 
       await supabase.from("members").upsert({
-        id: to,
-        address: to,
+        id: to.toLowerCase(),
+        address: to.toLowerCase(),
       });
 
       await supabase.from("member_communities").upsert({
         token_id: tokenId,
-        member_id: to,
+        member_id: to.toLowerCase(),
         community_id: contract.community_id,
       });
     });

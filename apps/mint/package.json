@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@supabase/supabase-js": "^1.33.3",
     "@wen/mint-nft": "workspace:*",
     "ethers": "^5.6.2",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "tw-elements": "^1.0.0-alpha12",
     "wen-connect": "^1.2.1"
   },
   "devDependencies": {
