@@ -2,6 +2,8 @@
 
 Your NFT community toolset!
 
+![demo](./demo.mov)
+
 ## Description
 
 Wen NFT is API to help you manage your NFT communities. It let's you ensure somebody owns an NFT before they are allowed to join exclusive communities you are building.
