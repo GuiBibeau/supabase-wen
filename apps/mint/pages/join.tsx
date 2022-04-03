@@ -18,15 +18,14 @@ const Join = () => {
 
   const handieDiscord = async (e: any) => {
     e.preventDefault();
-    // non blocking call to ensure functiojns goes through quickly and does not inder UX
-
+    // non blocking call, does not inder UX
     fetch("/api/discord", {
       body: JSON.stringify({ discord, address: wallet.address }),
       method: "POST",
     });
     // go to discord
-    // window.open("https://discord.gg/bfhNapbvbA");
-    // router.push("/");
+    window.open("https://discord.gg/bfhNapbvbA");
+    router.push("/");
   };
 
   return (
