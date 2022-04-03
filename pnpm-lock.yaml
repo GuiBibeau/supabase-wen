@@ -67,6 +67,7 @@ importers:
       eslint-config-next: ^12.1.0
       ethers: ^5.6.2
       next: 12.1.4
+      next-transpile-modules: ^9.0.0
       postcss: ^8.3.11
       react: 18.0.0
       react-dom: 18.0.0
@@ -80,6 +81,7 @@ importers:
       '@wen/mint-nft': link:../../packages/w3fs-nft
       ethers: 5.6.2
       next: 12.1.4_react-dom@18.0.0+react@18.0.0
+      next-transpile-modules: 9.0.0
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
       tw-elements: 1.0.0-alpha12_autoprefixer@10.4.4
@@ -4527,6 +4529,14 @@ packages:
       once: 1.4.0
     dev: true
 
+  /enhanced-resolve/5.9.2:
+    resolution: {integrity: sha512-GIm3fQfwLJ8YZx2smuHpBKkXC1yOk+OBEmKckVyL0i/ea8mqDEykK3ld5dgH1QYPNyT/lIllxV2LULnxCHaHkA==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      graceful-fs: 4.2.9
+      tapable: 2.2.1
+    dev: false
+
   /enquirer/2.3.6:
     resolution: {integrity: sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==}
     engines: {node: '>=8.6'}
@@ -4617,7 +4627,6 @@ packages:
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
-    dev: true
 
   /escape-html/1.0.3:
     resolution: {integrity: sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=}
@@ -6282,7 +6291,6 @@ packages:
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
-    dev: true
 
   /growl/1.10.5:
     resolution: {integrity: sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==}
@@ -8879,6 +8887,13 @@ packages:
   /next-tick/1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
+  /next-transpile-modules/9.0.0:
+    resolution: {integrity: sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==}
+    dependencies:
+      enhanced-resolve: 5.9.2
+      escalade: 3.1.1
+    dev: false
+
   /next/12.1.4_react-dom@17.0.2+react@17.0.2:
     resolution: {integrity: sha512-DA4g97BM4Z0nKtDvCTm58RxdvoQyYzeg0AeVbh0N4Y/D8ELrNu47lQeEgRGF8hV4eQ+Sal90zxrJQQG/mPQ8CQ==}
     engines: {node: '>=12.22.0'}
@@ -11410,6 +11425,11 @@ packages:
       resolve: 1.22.0
     transitivePeerDependencies:
       - ts-node
+    dev: false
+
+  /tapable/2.2.1:
+    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
+    engines: {node: '>=6'}
     dev: false
 
   /tape/4.15.0:
